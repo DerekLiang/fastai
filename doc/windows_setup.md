@@ -1,4 +1,4 @@
-# Installation under Windows 10 (documentation is work in progress)
+# Installation under Windows 10
 
 ## Why Windows?
 Well, if you have the possibility to just use Linux, work in a dual-boot configuration or have an GPU-equipped Linux server available, thats clearly 
@@ -14,9 +14,9 @@ Therefore, the Linux subsystem is not recommended to be used. The training speed
 
 If you still would like to use this environment, first activate the subsystem, then install Ubuntu from the store.
 Then you can proceed by cloning the git repo, installing python 3.6 and then by installing all 
-required Linux and python packages as normal. If you get a UTF-8 error during the pyyml installation, 
+required Linux and python packages as normal. If you get a UTF-8 error during the pyyml installation (required for Keras), 
 you need to install that python package separately (the package is not yet adapted for Python 3.6). Before installing the pyyml package, you need to enter a command to 
-switch the current code page. After issuing that command the install works (details on this command sequence will be added here, later).
+switch the current code page (enter 'chcp 1252'). After issuing that command the install should work.
 
 ## Windows Python installation (Anaconda)
 
@@ -53,9 +53,29 @@ After activating the environment (see last section), enter the following command
 ```sh
 conda install -c peterjc123 pytorch cuda90
 ```
+2. Install jupyter notebook, and helper libraries:
+```sh
+conda install jupyter matplotlib seaborn pillow bcolz
+pip install opencv-python graphviz sklearn_pandas isoweek pandas_summary tqdm torchvision torchtext
+```
+3. Enable jupyter widgets (see http://ipywidgets.readthedocs.io/en/stable/user_install.html for more details):
+```sh
+jupyter nbextension enable --py widgetsnbextension
+```
+4. Install keras and tensorflow-gpu (eventually optional step):
+```sh
+pip install keras tensorflow-gpu
+```
+If there is a problem in installing pyyml (utf-8 related error with python 3.6), then enter the following commands to install the program independently:
+```sh
+chcp 1252
+pip install pyyml
+chcp 65001
+```
+Then try to install keras and tensorflow again.
 
 ### Download fastai framework
-You utilize different approaches to download the fastai framework from GitHub. One way would be to use the command line git client using the Linux 
+You may utilize different approaches to download the fastai framework from GitHub. One way would be to use the command line git client using the Linux 
 sub-system (see second paragraph of this page). Another quite comfortably to use variant would be to use the GUI client GitHub Desktop:
 1. Download GitHub Desktop from this site: https://desktop.github.com/
 2. Install and then start the program.
@@ -69,8 +89,11 @@ sub-system (see second paragraph of this page). Another quite comfortably to use
 ## Test python installation
 
 ## Start jupyter notebook for development
-
+Under Windows, the link to the fastai library folder is not resolved after checking out the repository using conventional git commands. 
+The link is shown as an file ('fastai') in the file browser (e.g. under courses/dl1). 
+As a workaround, the variable PYTHONPATH needs to be set (or extended) accordingly (second command).
 ```sh
 activate development
+set PYTHONPATH=C:\Users\MY USERNAME\Documents\GitHub\fastai
 jupyter notebook
 ```

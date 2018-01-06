@@ -14,8 +14,8 @@ Therefore, the Linux subsystem is not recommended to be used. The training speed
 
 If you still would like to use this environment, first activate the subsystem, then install Ubuntu from the store.
 Then you can proceed by cloning the git repo, installing python 3.6 and then by installing all 
-required Linux and python packages as normal. If you get a UTF-8 error during the pyyml installation (required for Keras), 
-you need to install that python package separately (the package is not yet adapted for Python 3.6). Before installing the pyyml package, you need to enter a command to 
+required Linux and python packages as normal. If you get a UTF-8 error during the PyYAML installation (required for Keras), 
+you need to install that python package separately (the package is not yet adapted for Python 3.6). Before installing the PyYAML package, you need to enter a command to 
 switch the current code page (enter 'chcp 1252'). After issuing that command the install should work.
 
 ## Windows Python installation (Anaconda)
@@ -66,10 +66,10 @@ jupyter nbextension enable --py widgetsnbextension
 ```sh
 pip install keras tensorflow-gpu
 ```
-If there is a problem in installing pyyml (utf-8 related error with python 3.6), then enter the following commands to install the program independently:
+If there is a problem in installing PyYAML (utf-8 related error with python 3.6), then enter the following commands to install the program independently:
 ```sh
 chcp 1252
-pip install pyyml
+pip install PyYAML
 chcp 65001
 ```
 Then try to install keras and tensorflow again.

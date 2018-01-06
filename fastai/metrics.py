@@ -1,8 +1,8 @@
 from .imports import *
 from .torch_imports import *
 
-def accuracy(preds, targs):
-    preds = np.argmax(preds, axis=2)
+def accuracy(preds, targs, axis=1):
+    preds = np.argmax(preds, axis=axis)
     return (preds==targs).mean()
 
 def accuracy_thresh(thresh):

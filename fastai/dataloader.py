@@ -2,6 +2,7 @@ import torch, queue
 from torch.utils.data.sampler import SequentialSampler, RandomSampler, BatchSampler
 from .imports import *
 import collections,sys,traceback,threading
+import multiprocessing
 
 string_classes = (str, bytes)
 
@@ -71,7 +72,10 @@ class DataLoader(object):
         return res
 
     def __iter__(self):
-        with ThreadPoolExecutor(max_workers=self.num_workers) as e:
+        nw = self.num_workers
+        if nw <= 0:
+            nw = multiprocessing.cpu_count() + nw
+        with ThreadPoolExecutor(max_workers=nw) as e:
             for batch in e.map(self.get_batch, iter(self.batch_sampler)):
                 yield get_tensor(batch, self.pin_memory)
 

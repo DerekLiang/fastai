@@ -56,7 +56,7 @@ conda install -c peterjc123 pytorch cuda90
 2. Install jupyter notebook, and helper libraries:
 ```sh
 conda install jupyter matplotlib seaborn pillow bcolz
-pip install opencv-python graphviz sklearn_pandas isoweek pandas_summary tqdm torchvision torchtext
+pip install opencv-python graphviz sklearn_pandas isoweek pandas_summary tqdm torchvision torchtext feather-format spacy
 ```
 3. Enable jupyter widgets (see http://ipywidgets.readthedocs.io/en/stable/user_install.html for more details):
 ```sh
@@ -115,3 +115,25 @@ curl -O http://files.fast.ai/models/weights.tgz
 If don't yet have installed 7-zip, its a good idea to download and install the flexible compression/decompression program (go to http://www.7-zip.org/download.html and download the 64-bit Windows version).
 Open the windows file manager (explorer) and go to the fastai library folder. Then right-click the file weights.tgz and choose the context menu command '7-ZIP/Extract here'. Then right-click the extracted 
 file weights.tar and choose the same menu item again. There will be a new sub-directory 'weights' with the according weight data for the various models.
+
+
+### lesson3-rossmann
+
+Don't just download the datasets from the kaggle website, additional files are required as explained in the notebook itself.
+
+## Results of testing the notebooks
+### Lesson 1 (3 variants) (Jan 7, 2018)
+* Work after adaption of lean.TTA result processing and adaptations of shell script calls.
+* Long / float tensor format errors are fixed by adding conversion code in model.py class Stepper.
+
+### Lesson 2 (Jan 8, 2018)
+* The same fixes as for lesson 1 where needed.
+
+### Lesson 3 (Jan 8, 2018)
+* Does not currently work in my test. Columns 'BeforeSchoolHoliday', 'AfterStateHoliday', 'BeforeStateHoliday' are not calculated correctly.
+
+### Lesson 4 (Jan 8, 2018)
+* I get the following warning: "Warning: no model found for 'en' Only loading the 'en' tokenizer."
+* Script calls are partially adapted to work also for Windows. Word count calculation shell commands not yet converted to be portable.
+* Some of the imdb text files can't be opened in default encoding (ISO-8859-1=Latin 1). Also utf8 does not work for these files. 
+  Added exception handler to nlp.py class ConcatTextDataset, to ignore the non-readable content. Warning should be printed in addition.

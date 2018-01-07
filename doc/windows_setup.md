@@ -97,3 +97,23 @@ activate development
 set PYTHONPATH=C:\Users\MY USERNAME\Documents\GitHub\fastai
 jupyter notebook
 ```
+
+## Additional requirements for specific lesson notebooks
+
+### lesson1-rxt50
+
+This lession requires the download of pre-trained model weights from the fastai website.
+Open the Anaconda prompt and go to the fastai library folder (folder names are examples):
+
+```sh
+cd Documents\GitHub\fastai\fastai
+```
+
+Then download the weights file. If you can't execute the curl command, use your web-browser to download the file and save it in the target directory (see previous paragraph).
+```sh
+curl -O http://files.fast.ai/models/weights.tgz
+```
+
+If don't yet have installed 7-zip, its a good idea to download and install the flexible compression/decompression program (go to http://www.7-zip.org/download.html and download the 64-bit Windows version).
+Open the windows file manager (explorer) and go to the fastai library folder. Then right-click the file weights.tgz and choose the context menu command '7-ZIP/Extract here'. Then right-click the extracted 
+file weights.tar and choose the same menu item again. There will be a new sub-directory 'weights' with the according weight data for the various models.

@@ -86,8 +86,6 @@ sub-system (see second paragraph of this page). Another quite comfortably to use
    That could eventually be useful at one point in the future, once there would be further adaptations or extensions.
 6. Select some target folder for the local copy of the repository and then click 'Clone'.
 
-## Test python installation
-
 ## Start jupyter notebook for development
 Under Windows, the link to the fastai library folder is not resolved after checking out the repository using conventional git commands. 
 The link is shown as an file ('fastai') in the file browser (e.g. under courses/dl1). 

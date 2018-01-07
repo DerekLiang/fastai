@@ -206,10 +206,17 @@ class ModelData():
         self.path,self.trn_dl,self.val_dl,self.test_dl = path,trn_dl,val_dl,test_dl
 
     @classmethod
-    def from_dls(cls, path,trn_dl,val_dl,test_dl=None):
+    def from_dls(cls, path, trn_dl, val_dl, test_dl=None):
         trn_dl,val_dl = ModelDataLoader(trn_dl),ModelDataLoader(val_dl)
         if test_dl: test_dl = ModelDataLoader(test_dl)
         return cls(path, trn_dl, val_dl, test_dl)
+    
+    def __str__(self):
+        return type(self).__name__ + ":" \
+            + "path='" + self.path + "', " \
+            + "len(trn_dl)=" + str(len(self.trn_dl)) + ", " \
+            + "len(val_dl)=" + ("None" if self.val_dl == None else str(len(self.val_dl))) + ", " \
+            + "len(test_dl)=" + ("None" if self.test_dl == None else str(len(self.test_dl)))
 
     @property
     def is_reg(self): return self.trn_ds.is_reg
@@ -255,6 +262,12 @@ class ImageData(ModelData):
                 (test_ds,False),(test_aug_ds,False)
             ]
         ]
+        
+    def __str__(self):
+        return super(ImageData, self).__str__() + \
+            ", bs=" + str(self.bs) + \
+            ", num_workers=" + ('auto-detect' if self.num_workers <=0 else str(self.num_workers)) + \
+            ", classes=" + ("None" if self.classes==None else  str(self.classes))
 
     def get_dl(self, ds, shuffle):
         if ds is None: return None

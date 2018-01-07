@@ -40,7 +40,9 @@ class Stepper():
         output = self.m(*xs)
         if isinstance(output,(tuple,list)): output,*xtra = output
         self.opt.zero_grad()
-        loss = raw_loss = self.crit(output, y.long())
+        if type(output.data) == torch.cuda.IntTensor:
+            y = y.long()
+        loss = raw_loss = self.crit(output, y)
         if self.reg_fn: loss = self.reg_fn(output, xtra, raw_loss)
         loss.backward()
         if self.clip:   # Gradient clipping
@@ -51,7 +53,9 @@ class Stepper():
     def evaluate(self, xs, y):
         preds = self.m(*xs)
         if isinstance(preds,(tuple,list)): preds=preds[0]
-        return preds, self.crit(preds, y.long())
+        if type(preds.data) == torch.cuda.IntTensor:
+            y = y.long()
+        return preds, self.crit(preds, y)
 
 from . import lm_rnn
 def set_train_mode(m):

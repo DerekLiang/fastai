@@ -102,7 +102,7 @@ jupyter notebook
 
 ### lesson1-rxt50
 
-This lession requires the download of pre-trained model weights from the fastai website.
+This lession requires the download of pre-trained model weights from the fastai webserver.
 Open the Anaconda prompt and go to the fastai library folder (folder names are examples):
 
 ```sh

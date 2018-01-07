@@ -116,3 +116,5 @@ ENV/
 ehthumbs.db
 Thumbs.db
 .idea
+fastai/weights.tar
+fastai/weights.tgz

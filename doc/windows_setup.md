@@ -123,11 +123,12 @@ Don't just download the datasets from the kaggle website, additional files are r
 
 ## Results of testing the notebooks
 ### Lesson 1 (3 variants) (Jan 7, 2018)
-* Work after adaption of lean.TTA result processing and adaptations of shell script calls.
+* Work after adaption of learn.TTA result processing and adaptations of shell script calls.
 * Long / float tensor format errors are fixed by adding conversion code in model.py class Stepper.
 
 ### Lesson 2 (Jan 8, 2018)
-* The same fixes as for lesson 1 where needed.
+* The same fixes as for lesson 1 were needed.
+* In addition the f2 calculation was not working, changed by supplying log-prob values instead of probabilities to the function.
 
 ### Lesson 3 (Jan 8, 2018)
 * Does not currently work in my test. Columns 'BeforeSchoolHoliday', 'AfterStateHoliday', 'BeforeStateHoliday' are not calculated correctly.

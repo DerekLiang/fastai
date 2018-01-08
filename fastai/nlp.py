@@ -200,10 +200,7 @@ class ConcatTextDataset(torchtext.data.Dataset):
         if os.path.isdir(path): paths=glob(f'{path}/*.*')
         else: paths=[path]
         for p in paths:
-            try:
-                for line in open(p): text += text_field.preprocess(line)
-            except:
-                pass
+            for line in open(p): text += text_field.preprocess(line)
             if newline_eos: text.append('<eos>')
 
         examples = [torchtext.data.Example.fromlist([text], fields)]

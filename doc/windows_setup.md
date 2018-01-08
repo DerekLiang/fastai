@@ -137,4 +137,6 @@ Don't just download the datasets from the kaggle website, additional files are r
 * I get the following warning: "Warning: no model found for 'en' Only loading the 'en' tokenizer."
 * Script calls are partially adapted to work also for Windows. Word count calculation shell commands not yet converted to be portable.
 * Some of the imdb text files can't be opened in default encoding (ISO-8859-1=Latin 1). Also utf8 does not work for these files. 
-  Added exception handler to nlp.py class ConcatTextDataset, to ignore the non-readable content. Warning should be printed in addition.
+  To prevent these errors, the default error handling in this notebook for codec errors is set in the beginning of the
+  workbook to ignore such errors.  The error otherwise would appear in nlp.py (where it could be fixed probably by setting 
+  to ignore the error in some system call), but later in the sentiment analysis section the error appears from the external package.

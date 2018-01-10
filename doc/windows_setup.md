@@ -56,7 +56,7 @@ conda install -c peterjc123 pytorch cuda90
 2. Install jupyter notebook, and helper libraries:
 ```sh
 conda install jupyter matplotlib seaborn pillow bcolz
-pip install opencv-python graphviz sklearn_pandas isoweek pandas_summary tqdm torchvision torchtext feather-format spacy
+pip install opencv-python graphviz sklearn_pandas isoweek pandas_summary tqdm torchvision torchtext feather-format spacy scikit-image
 ```
 3. Enable jupyter widgets (see http://ipywidgets.readthedocs.io/en/stable/user_install.html for more details):
 ```sh
@@ -140,3 +140,13 @@ Don't just download the datasets from the kaggle website, additional files are r
   To prevent these errors, the default error handling in this notebook for codec errors is set in the beginning of the
   workbook to ignore such errors.  The error otherwise would appear in nlp.py (where it could be fixed probably by setting 
   to ignore the error in some system call), but later in the sentiment analysis section the error appears from the external package.
+
+### Lesson 5 (Jan 9, 2018)
+* Error: torch.index_select received an invalid combination of arguments - got (torch.cuda.FloatTensor, int, torch.cuda.IntTensor), but expected (torch.cuda.FloatTensor source, int dim, torch.cuda.LongTensor index)
+* Notebook does not yet work...
+
+### cifar10 (Jan 10, 2018)
+* Added method to move input files into sub-folders.
+* Fixed processing TTA results so that accuracy can be calculated.
+* Convert some model results to long-vectors, so that there is no Int / Long
+  mismatch tensor error.

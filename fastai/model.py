@@ -90,7 +90,7 @@ def fit(model, data, epochs, opt, crit, metrics=None, callbacks=None, **kwargs):
         for (*x,y) in t:
             batch_num += 1
             for cb in callbacks: cb.on_batch_begin()
-            loss = stepper.step(V(x),V(y))
+            loss = stepper.step(V(x),V(y).long())
             avg_loss = avg_loss * avg_mom + loss * (1-avg_mom)
             debias_loss = avg_loss / (1 - avg_mom**batch_num)
             t.set_postfix(loss=debias_loss)
@@ -111,7 +111,7 @@ def validate(stepper, dl, metrics):
     loss,res = [],[]
     stepper.reset(False)
     for (*x,y) in iter(dl):
-        preds,l = stepper.evaluate(VV(x), VV(y))
+        preds,l = stepper.evaluate(VV(x), VV(y).long())
         loss.append(to_np(l))
         res.append([f(to_np(preds),to_np(y)) for f in metrics])
     return [np.mean(loss)] + list(np.mean(np.stack(res),0))

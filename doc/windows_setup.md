@@ -147,6 +147,7 @@ Don't just download the datasets from the kaggle website, additional files are r
 
 ### Lesson 6 (Jan 10, 2018)
 * Added long-cast in Char3Model, CharLoopModel and CharLoopConcatModel models, to prevent Int/Long tensor error.
+  Fix indexing problem (from https://github.com/hiromis/fastai/commit/131e230dd915b0998b8afe9603a183c001422da8#diff-24cf862482118c2f3e52f9d4234825ac)
 
 ### cifar10 (Jan 10, 2018)
 * Added method to move input files into sub-folders.

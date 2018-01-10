@@ -145,6 +145,9 @@ Don't just download the datasets from the kaggle website, additional files are r
 * Error: torch.index_select received an invalid combination of arguments - got (torch.cuda.FloatTensor, int, torch.cuda.IntTensor), but expected (torch.cuda.FloatTensor source, int dim, torch.cuda.LongTensor index)
 * Notebook does not yet work...
 
+### Lesson 6 (Jan 10, 2018)
+* Added long-cast in Char3Model, CharLoopModel and CharLoopConcatModel models, to prevent Int/Long tensor error.
+
 ### cifar10 (Jan 10, 2018)
 * Added method to move input files into sub-folders.
 * Fixed processing TTA results so that accuracy can be calculated.

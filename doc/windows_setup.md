@@ -57,6 +57,7 @@ conda install -c peterjc123 pytorch cuda90
 ```sh
 conda install jupyter matplotlib seaborn pillow bcolz
 pip install opencv-python graphviz sklearn_pandas isoweek pandas_summary tqdm torchvision torchtext feather-format spacy scikit-image
+conda install -c conda-forge ffmpeg
 ```
 3. Enable jupyter widgets (see http://ipywidgets.readthedocs.io/en/stable/user_install.html for more details):
 ```sh
@@ -148,6 +149,11 @@ Don't just download the datasets from the kaggle website, additional files are r
 ### Lesson 6 (Jan 10, 2018)
 * Added long-cast in Char3Model, CharLoopModel and CharLoopConcatModel models, to prevent Int/Long tensor error.
   Fix indexing problem (from https://github.com/hiromis/fastai/commit/131e230dd915b0998b8afe9603a183c001422da8#diff-24cf862482118c2f3e52f9d4234825ac)
+  
+### Lesson 6 SGD
+* Use torch clamp instead of np.clip to avoid boolean/byte tensor error
+* Print exp(log_loss) in SGD example
+* Added ffmpeg install note (using conda)
 
 ### cifar10 (Jan 10, 2018)
 * Added method to move input files into sub-folders.

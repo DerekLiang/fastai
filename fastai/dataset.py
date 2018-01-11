@@ -168,7 +168,7 @@ class FilesArrayDataset(FilesDataset):
 
 
 class FilesIndexArrayDataset(FilesArrayDataset):
-    def get_c(self): return int(self.y.max())+1
+    def get_c(self): return (int(self.y.max())+1)
 
 
 class FilesNhotArrayDataset(FilesArrayDataset):
@@ -227,9 +227,9 @@ class ModelData():
     @property
     def test_ds(self): return self.test_dl.dataset
     @property
-    def trn_y(self): return self.trn_ds.y
+    def trn_y(self): return self.trn_ds.y.astype(np.int64)
     @property
-    def val_y(self): return self.val_ds.y
+    def val_y(self): return self.val_ds.y.astype(np.int64)
 
 
 class ModelDataLoader():

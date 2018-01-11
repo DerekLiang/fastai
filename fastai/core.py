@@ -11,12 +11,17 @@ def T(a):
     if torch.is_tensor(a): res = a
     else:
         a = np.array(np.ascontiguousarray(a))
-        if a.dtype in (np.int8, np.int16, np.int32, np.int64):
+        if a.dtype in (np.int8, np.int16, np.int32):
+            res = torch.LongTensor(a.astype(a.dtype))
+        elif a.dtype == np.int64:
             res = torch.LongTensor(a.astype(np.int64))
         elif a.dtype in (np.float32, np.float64):
-            return torch.FloatTensor(a.astype(np.float32))
+            res = torch.FloatTensor(a.astype(np.float32))
         else: raise NotImplementedError
-    return to_gpu(res, async=True)
+    if type(res)==torch.IntTensor:
+        res = res.long()
+    res = to_gpu(res, async=True)
+    return res
 
 def create_variable(x, volatile, requires_grad=False):
     if not isinstance(x, Variable):

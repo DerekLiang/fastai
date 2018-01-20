@@ -215,8 +215,8 @@ class ModelData():
         return type(self).__name__ + " (" \
             + "path='" + self.path + "', " \
             + "len(trn_dl)=" + str(len(self.trn_dl)) + ", " \
-            + "len(val_dl)=" + ("None" if self.val_dl == None else str(len(self.val_dl))) + ", " \
-            + "len(test_dl)=" + ("None" if self.test_dl == None else str(len(self.test_dl))) + ")"
+            + "len(val_dl)=" + ("None" if self.val_dl == None else str(len(self.val_dl))+" b.") + ", " \
+            + "len(test_dl)=" + ("None" if self.test_dl == None else str(len(self.test_dl))+" b.") + ")"
 
     @property
     def is_reg(self): return self.trn_ds.is_reg
